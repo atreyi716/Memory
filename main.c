@@ -9,7 +9,7 @@
 // documentation link:
 // https://github.com/DigiPen-Faculty/CProcessing/wiki
 //
-// Copyright © 6464 DigiPen, All rights reserved.
+// Copyright Â© 6464 DigiPen, All rights reserved.
 //---------------------------------------------------------
 
 #include "cprocessing.h"
@@ -18,6 +18,7 @@
 #include "math.h"
 #define MAX_PAIRS 49
 
+CP_Color White = {255, 255, 255, 255};
 CP_Image Background;
 CP_Font Text;
 CP_Image admin_widget;
@@ -191,6 +192,8 @@ void game_update(void) {
 				if (cards[firstRow][firstCol] == cards[secondRow][secondCol]) {
 
 					score++;
+					alpha[firstRow][firstCol] = 255;
+					alpha[secondRow][secondCol] = 255;
 				}
 				selectedCount = 0;
 			}
@@ -201,153 +204,155 @@ void game_update(void) {
 		for (int j = 0; j < 7; j++) {
 			float x = (float) j * 64 + 300;
 			float y = (float) i * 64 + 80;
+			CP_Settings_Fill(White);
+			CP_Graphics_DrawRect(x, y, 64, 64);
 			switch (cards[i][j]) {
 			case 1:
-				CP_Image_Draw(admin_widget, x, y, 64, 64, 255);
+				CP_Image_Draw(admin_widget, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 2:
-				CP_Image_Draw(bag_moving_box, x, y, 64, 64, 255);
+				CP_Image_Draw(bag_moving_box, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 3:
-				CP_Image_Draw(banana, x, y, 64, 64, 255);
+				CP_Image_Draw(banana, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 4:
-				CP_Image_Draw(barnacle_pod, x, y, 64, 64, 255);
+				CP_Image_Draw(barnacle_pod, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 5:
-				CP_Image_Draw(blockmaker, x, y, 64, 64, 255);
+				CP_Image_Draw(blockmaker, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 6:
-				CP_Image_Draw(blockmaker_chassis, x, y, 64, 64, 255);
+				CP_Image_Draw(blockmaker_chassis, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 7:
-				CP_Image_Draw(blockmaker_engine, x, y, 64, 64, 255);
+				CP_Image_Draw(blockmaker_engine, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 8:
-				CP_Image_Draw(blockmaker_plates, x, y, 64, 64, 255);
+				CP_Image_Draw(blockmaker_plates, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 9:
-				CP_Image_Draw(bunch_of_grapes, x, y, 64, 64, 255);
+				CP_Image_Draw(bunch_of_grapes, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 10:
-				CP_Image_Draw(cabbage, x, y, 64, 64, 255);
+				CP_Image_Draw(cabbage, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 11:
-				CP_Image_Draw(carrot, x, y, 64, 64, 255);
+				CP_Image_Draw(carrot, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 12:
-				CP_Image_Draw(cauldron, x, y, 64, 64, 255);
+				CP_Image_Draw(cauldron, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 13:
-				CP_Image_Draw(cocktail_shaker, x, y, 64, 64, 255);
+				CP_Image_Draw(cocktail_shaker, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 14:
-				CP_Image_Draw(dice_12sided, x, y, 64, 64, 255);
+				CP_Image_Draw(dice_12sided, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 15:
-				CP_Image_Draw(fried_egg, x, y, 64, 64, 255);
+				CP_Image_Draw(fried_egg, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 16:
-				CP_Image_Draw(fuelmaker_case, x, y, 64, 64, 255);
+				CP_Image_Draw(fuelmaker_case, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 17:
-				CP_Image_Draw(furniture_chair, x, y, 64, 64, 255);
+				CP_Image_Draw(furniture_chair, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 18:
-				CP_Image_Draw(furniture_smallwindow, x, y, 64, 64, 255);
+				CP_Image_Draw(furniture_smallwindow, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 19:
-				CP_Image_Draw(irrigator_9000, x, y, 64, 64, 255);
+				CP_Image_Draw(irrigator_9000, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 20:
-				CP_Image_Draw(lips, x, y, 64, 64, 255);
+				CP_Image_Draw(lips, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 21:
-				CP_Image_Draw(metalmaker, x, y, 64, 64, 255);
+				CP_Image_Draw(metalmaker, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 22:
-				CP_Image_Draw(npc_deimaginator, x, y, 64, 64, 255);
+				CP_Image_Draw(npc_deimaginator, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 23:
-				CP_Image_Draw(npc_dumbbot_variant_widgetGreen_x1_move_png_1354836794, x, y, 64, 64, 255);
+				CP_Image_Draw(npc_dumbbot_variant_widgetGreen_x1_move_png_1354836794, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 24:
-				CP_Image_Draw(npc_fox_fox_orangeFox_x1_iconic_png_1354839585, x, y, 64, 64, 255);
+				CP_Image_Draw(npc_fox_fox_orangeFox_x1_iconic_png_1354839585, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 25:
-				CP_Image_Draw(npc_jabba1, x, y, 64, 64, 255);
+				CP_Image_Draw(npc_jabba1, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 26:
-				CP_Image_Draw(npc_juju_bandit_bandana_red_variant_yellow_x1_iconic_png_1354834188, x, y, 64, 64, 255);
+				CP_Image_Draw(npc_juju_bandit_bandana_red_variant_yellow_x1_iconic_png_1354834188, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 27:
-				CP_Image_Draw(parsnip, x, y, 64, 64, 255);
+				CP_Image_Draw(parsnip, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 28:
-				CP_Image_Draw(party_atm, x, y, 64, 64, 255);
+				CP_Image_Draw(party_atm, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 29:
-				CP_Image_Draw(piggy_feeder, x, y, 64, 64, 255);
+				CP_Image_Draw(piggy_feeder, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 30:
-				CP_Image_Draw(pineapple, x, y, 64, 64, 255);
+				CP_Image_Draw(pineapple, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 31:
-				CP_Image_Draw(pumpkin_carved_2, x, y, 64, 64, 255);
+				CP_Image_Draw(pumpkin_carved_2, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 32:
-				CP_Image_Draw(pumpkin_lit_5, x, y, 64, 64, 255);
+				CP_Image_Draw(pumpkin_lit_5, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 33:
-				CP_Image_Draw(quest_req_icon, x, y, 64, 64, 255);
+				CP_Image_Draw(quest_req_icon, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 34:
-				CP_Image_Draw(quest_req_icon_letterblock, x, y, 64, 64, 255);
+				CP_Image_Draw(quest_req_icon_letterblock, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 35:
-				CP_Image_Draw(quill, x, y, 64, 64, 255);
+				CP_Image_Draw(quill, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 36:
-				CP_Image_Draw(rock_beryl_1, x, y, 64, 64, 255);
+				CP_Image_Draw(rock_beryl_1, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 37:
-				CP_Image_Draw(rock_metal_2, x, y, 64, 64, 255);
+				CP_Image_Draw(rock_metal_2, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 38:
-				CP_Image_Draw(saucepan, x, y, 64, 64, 255);
+				CP_Image_Draw(saucepan, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 39:
-				CP_Image_Draw(sheep_red_wine, x, y, 64, 64, 255);
+				CP_Image_Draw(sheep_red_wine, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 40:
-				CP_Image_Draw(shovel, x, y, 64, 64, 255);
+				CP_Image_Draw(shovel, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 41:
-				CP_Image_Draw(smelter, x, y, 64, 64, 255);
+				CP_Image_Draw(smelter, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 42:
-				CP_Image_Draw(smoothie, x, y, 64, 64, 255);
+				CP_Image_Draw(smoothie, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 43:
-				CP_Image_Draw(stoot_barfield_pullstring_doll, x, y, 64, 64, 255);
+				CP_Image_Draw(stoot_barfield_pullstring_doll, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 44:
-				CP_Image_Draw(super_scraper, x, y, 64, 64, 255);
+				CP_Image_Draw(super_scraper, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 45:
-				CP_Image_Draw(trophy_street_creator_earth, x, y, 64, 64, 255);
+				CP_Image_Draw(trophy_street_creator_earth, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 46:
-				CP_Image_Draw(watering_can, x, y, 64, 64, 255);
+				CP_Image_Draw(watering_can, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 47:
-				CP_Image_Draw(woodworker_chassis, x, y, 64, 64, 255);
+				CP_Image_Draw(woodworker_chassis, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 48:
-				CP_Image_Draw(woodworker_fuser, x, y, 64, 64, 255);
+				CP_Image_Draw(woodworker_fuser, x, y, 64, 64, alpha[i][j]);
 				break;
 			case 49:
-				CP_Image_Draw(zucchini, x, y, 64, 64, 255);
+				CP_Image_Draw(zucchini, x, y, 64, 64, alpha[i][j]);
 				break;
 			}
 		}
